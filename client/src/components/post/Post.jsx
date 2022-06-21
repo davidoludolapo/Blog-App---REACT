@@ -19,7 +19,10 @@ function Post({ post }) {
         </Link>
         <hr />
         <div className="postDate">
-          {new Date(post.createdAt).toDateString()}
+          {new Date(post.createdAt).toDateString()} 
+        </div>
+        <div className="postTime">
+        {new Date(post.createdAt).toLocaleTimeString()}
         </div>
       </div>
       <p className="postDesc">{post.desc}</p>

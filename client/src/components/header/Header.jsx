@@ -1,16 +1,20 @@
-import React from 'react'
-import "./Header.css"
+import React from "react";
+import "./Header.css";
 
 function Header() {
   return (
-    <div className='header'>
-      <div className="headerTitles">
-        <span className="headerTitleSm">React & Node</span>
-        <span className="headerTitleLg">Blog</span>
+    <div className="header">
+      <div className="headerBg">
+        <img src="https://i.ibb.co/pydcNqT/king.jpg" alt="" className="imgBg" />
       </div>
-      <img src="https://i.ibb.co/Zm0MDFw/20.jpg" alt="" className="headerImg" />
+      <div className="headerContent">
+        <h2>The King's Pride</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita atque saepe voluptatum sunt reprehenderit sed optio minus cum animi! </p>
+      <button className="btnPrimary">Read Article</button>
+      </div>
+
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -7,6 +7,7 @@ import { Context } from "../../context/Context";
 function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [cat, setCat] = useState([])
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
 
@@ -16,7 +17,9 @@ function Write() {
       username: user.username,
       title,
       desc,
+      cat
     };
+    console.log(newPost);
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -31,6 +34,7 @@ function Write() {
       const res = await axios.post("/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (error) {}
+
   };
   return (
     <div className="write">
@@ -55,6 +59,11 @@ function Write() {
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
           />
+          <select onClick={e=>setCat(e.target.value)}>
+            <option value="music">Music</option>
+            <option value="animals">Animals</option>
+            <option value="sports">Sports</option>
+          </select>
         </div>
         <div className="writeFormGroup">
           <textarea

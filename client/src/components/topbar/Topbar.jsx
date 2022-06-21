@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
+import { useState } from "react";
 
 function Topbar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const PF = "http://localhost:5000/images/";
+
+  const [dropdown, setDropdown] = useState(false);
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -13,10 +16,7 @@ function Topbar() {
   return (
     <div className="top">
       <div className="topleft">
-        <i className="topIcon fa-brands fa-facebook-square"></i>
-        <i className="topIcon fa-brands fa-twitter-square"></i>
-        <i className="topIcon fa-brands fa-pinterest-square"></i>
-        <i className="topIcon fa-brands fa-instagram-square"></i>
+        <h3>Bloggy</h3>
       </div>
       <div className="topcenter">
         <ul className="topList">
@@ -51,23 +51,45 @@ function Topbar() {
             <img src={PF + user.profilePic} alt="" className="topImg" />
           </Link>
         ) : (
-          <ul className="topList">
-            <li className="topListItem">
+          <div className="dropdown">
+            
+            <i class="fa-solid fa-lock"></i>
+          
+            <div className="dropdown-content">
               <Link className="link" to="/login">
                 Login
               </Link>
-            </li>
-            <li className="topListItem">
+              <hr />
               <Link className="link" to="/register">
                 Register
               </Link>
-            </li>
-          </ul>
+            </div>
+          </div>
         )}
-        <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
+  
       </div>
     </div>
   );
 }
 
 export default Topbar;
+
+{
+  /* <ul className="topList">
+            
+              <img
+                src="https://i.ibb.co/sW5qvV7/12.jpg"
+                alt=""
+                className="topImg dropImg"
+              />
+              <div className="dropdown-content">
+                <Link className="link" to="/login">
+                  Login
+                </Link>
+                <Link className="link" to="/register">
+                  Register
+                </Link>
+              </div>
+        
+          </ul> */
+}
